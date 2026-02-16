@@ -1,5 +1,5 @@
-# Python ka base image
-FROM python:3.10-slim-buster
+# Python ka naya base image (Buster hata kar Bullseye kar diya)
+FROM python:3.10-slim-bullseye
 
 # System packages update karo aur FFmpeg install karo
 RUN apt-get update && apt-get upgrade -y
