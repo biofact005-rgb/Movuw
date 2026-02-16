@@ -3,3 +3,4 @@ tgcrypto
 pytgcalls
 yt-dlp
 nest_asyncio
+flask
