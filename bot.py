@@ -32,10 +32,9 @@ app = Flask('')
 
 @app.route('/')
 def home():
-    return "Bot is Running! 24/7"
+    return "Bot is Running Securely! 24/7"
 
 def run():
-    # Render PORT environment variable automatically set karta hai
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
 
 def keep_alive():
@@ -43,14 +42,15 @@ def keep_alive():
     t.start()
 
 # ==========================================
-# 👇 AAPKI DETAILS 👇
+# 👇 CONFIGURATION (AB VARIABLES SE AAYEGA) 👇
 # ==========================================
 
-API_ID = 35705280
-API_HASH = "4e00fa78042df47383c703811693ff9f"
-BOT_TOKEN = "8285344384:AAEvm6Fv1BHY_IjajqRJ-lRsyEhYsb2bIq0"
-OWNER_ID = 8557964907
-STRING_SESSION = "BQIg0cAAdhpbiFnZ1K1_mbFbxhAxDibyEv7WL4tnoSMYHrQ0dYldTkd305FE1lvzkXhftkZqR1BEheUVHVSIRoBZoi62YQgQQ9R9tatsMZ3dhX0xjQ_54PeApCSINQgE_WxrLambqINrxlqCkg1YRjNX53hCphDYq4NlUmgzdE6otixbUdmVSkWmgppjgK6UzZvStGDWzAOnu17GMd98WHaJ4c97GjuObvcf7cKIRz7tG6KcF-QIfuPQ_jlJ56XNDOUJy6UJU4_QhQQoENipZ9zgVb-p3_z429pcQHx9lhw5jbXbg_9GqJIPEIsEW4J84O3Fe_fykY_NM7sF0wpbk7yzapycMgAAAAH-GC5rAA"
+# Code ab Render ki settings se ye values uthayega
+API_ID = int(os.environ.get("API_ID"))
+API_HASH = os.environ.get("API_HASH")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+OWNER_ID = int(os.environ.get("OWNER_ID"))
+STRING_SESSION = os.environ.get("STRING_SESSION")
 
 # ==========================================
 
@@ -211,12 +211,12 @@ async def cb_handler(client, query: CallbackQuery):
 
 async def start_services():
     print("Web Server Starting...")
-    keep_alive() # Flask yahan start hoga
+    keep_alive()
     print("Bot Starting...")
     await bot.start()
     await assistant.start()
     await call_py.start()
-    print("🚀 BOT LIVE! (Render Ready)")
+    print("🚀 BOT LIVE! (Render + Secure Mode)")
     await idle()
     await bot.stop()
     await assistant.stop()
